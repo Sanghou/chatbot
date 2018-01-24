@@ -67,9 +67,6 @@ class Bot(BaseBot):
                 self.send_chatroom_welcome_message(event)
             return
 
-
-
-
         if message == '영화순위':
             self.send_box_office(event)
         elif message == '근처 상영관 찾기':
@@ -106,6 +103,39 @@ class Bot(BaseBot):
             msg = Message(event).set_text('날씨 확인을 위해 현재 위치를 전송해주세요.')\
                 .add_location_request('Send Location')
             self.send_message(msg)
+        elif message == '매드캠프':
+            FLAG = 3
+            data['FLAG'] = FLAG
+            self.set_project_data(data)
+            msg = Message(event).set_text('매드 캠프와 관련된 설문의 결과를 볼 수 있습니다.')
+            self.send_message(msg)
+        elif '코딩' in message and '못' in message and FLAG ==3 :
+            msg = Message(event).set_text('코딩을 못하더라도 잘 따라갈 수 있다고 83.3%의 학생들이 응답해주었습니다 :-) ' )
+            self.send_message(msg)
+
+        elif '만들' in message and FLAG == 3:
+            msg = Message(event).set_test('많은 학생들이 안드로이드 APP 개발이나 게임 개발을 좋다고해요.')
+            self.send_message(msg) 
+        elif '배고프면' in message and FLAG == 3:
+            msg = Message(event).set_test('매드캠프는 약 130만원 가량의 야식비를 지원해줘요!!')
+            self.send_message(msg)
+        
+        elif '후회' in message and FLAG == 3:
+            msg = Message(event).set_test('잠이 부족할 수 있고 따라가기 어려울 수 잇지만 결코 후회하지는 않을거에요.')
+            self.send_message(msg)
+
+        elif '홍재민' in message and FLAG == 3:
+            msg = Message(event).set_test('조교님은 매캠의 헬퍼로서 굳은 일을 도맡아 해주시는 천사님이에요. 많은 학생들이 사랑하고 있죠.')
+            self.send_message(msg)
+
+        elif '류석영' in message and FLAG == 3 :
+            msg = Message(event).set_test('다섯 글자로 표현하자면, “행복전도사”, “카이의여신”, “항상열정적” 이라고 할 수 있겠네요. 전산의 인기녀로서 매우매우 많은 학생들에게 사랑과 존경을 한 몸에 받고 계십니다.')
+            self.send_message(msg)
+
+        elif '장병규' in message and FLAG == 3 :
+            msg = Message(event).set_test('다섯 글자로 표현하자면, “동네아저씨”, “몰입전도사”, “야식후원자” 라고 할 수 있겠네요.')
+            self.send_message(msg)
+
         else :
             data = self.get_user_data()
             wait_feedback = data.get('wait_feedback')
