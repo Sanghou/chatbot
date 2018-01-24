@@ -122,7 +122,7 @@ class Bot(BaseBot):
             self.send_message(msg)
         
         elif '후회' in message and FLAG == 3:
-            msg = Message(event).set_text('잠이 부족할 수 있고 따라가기 어려울 수 잇지만 결코 후회하지는 않을거에요.')
+            msg = Message(event).set_text('잠이 부족할 수 있고 따라가기 어려울 수 있지만 결코 후회하지는 않을거에요.')
             self.send_message(msg)
 
         elif '홍재민' in message and FLAG == 3:
@@ -148,10 +148,12 @@ class Bot(BaseBot):
 
     def send_welcome_message(self, event):
         message = Message(event).set_text('안녕하세요. 오늘을 함께할 cs496  채팅 봇입니다.\n ' +
-        '시작가능하신 명령어로 \'영화순위\' ,  \'근처 상영관 찾기\' ,\'메뉴\', \'날씨\', '매드캠프'가 있습니다. ')\
+        '시작가능하신 명령어로 \'영화순위\' ,  \'근처 상영관 찾기\' ,\'메뉴\', \'날씨\', \'매드캠프\'가 있습니다. ')\
         .add_quick_reply('영화순위')\
         .add_quick_reply('근처 상영관 찾기')\
-        .add_quick_reply('메뉴보기')
+        .add_quick_reply('메뉴보기')\
+        .add_quick_reply('날씨')\
+        .add_quick_reply('매드캠프')
         self.send_message(message)
 
     def send_weather(self, lat, lon, appid):
